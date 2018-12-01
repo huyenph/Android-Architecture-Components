@@ -1,5 +1,6 @@
 package com.utildev.arch.architecturecomponents.data.room;
 
+import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 
@@ -7,6 +8,7 @@ import java.util.List;
 
 import io.reactivex.Flowable;
 
+@Dao
 public interface UserDao {
     @Query("SELECT COUNT(*) FROM " + RoomConstant.USER)
     Flowable<Integer> getUserTotal();

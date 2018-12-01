@@ -12,4 +12,22 @@ public class UserEntity {
     private String name;
     @ColumnInfo(name = "job")
     private String job;
+
+    public UserEntity(long id, String name, String job) {
+        this.id = id;
+        this.name = name;
+        this.job = job;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name != null ? name : "";
+    }
+
+    public String getJob() {
+        return job != null ? job : "";
+    }
 }
