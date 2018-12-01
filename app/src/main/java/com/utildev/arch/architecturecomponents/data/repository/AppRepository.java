@@ -35,6 +35,10 @@ public class AppRepository implements Repository {
         disposables = new ArrayList<>();
     }
 
+    public List<Disposable> getDisposables() {
+        return disposables;
+    }
+
     @Override
     public LiveData<RestUserSE> getUserStackExchange(String order, String sort, String site, int page) {
         MutableLiveData<RestUserSE> mutableLiveData = new MutableLiveData<>();

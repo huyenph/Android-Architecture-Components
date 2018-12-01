@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.utildev.arch.architecturecomponents.presentation.fragment.remote.RemoteViewModel" />
+
+        <variable
+            name="adapter"
+            type="android.support.v7.widget.RecyclerView.Adapter" />
+
+        <variable
+            name="layoutManager"
+            type="android.support.v7.widget.RecyclerView.LayoutManager" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#0ff">
+
+        <include
+            android:id="@+id/fragRemote_includeList"
+            layout="@layout/view_list"
+            bind:adapter="@{adapter}"
+            bind:layoutManager="@{layoutManager}"
+            bind:viewModel="@{viewModel}" />
+
+        <include
+            layout="@layout/view_loading"
+            bind:viewModel="@{viewModel}" />
+
+    </FrameLayout>
+</layout>
