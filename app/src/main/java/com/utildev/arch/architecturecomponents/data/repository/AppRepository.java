@@ -42,6 +42,7 @@ public class AppRepository implements Repository {
     @Override
     public LiveData<RestUserSE> getUserStackExchange(String order, String sort, String site, int page) {
         MutableLiveData<RestUserSE> mutableLiveData = new MutableLiveData<>();
+        RestUserSE userSE;
         Disposable disposable = remoteDataSource.requestUserSE(order, sort, site, page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

@@ -11,16 +11,6 @@ import com.utildev.arch.architecturecomponents.presentation.BaseViewModel;
 import com.utildev.arch.architecturecomponents.presentation.fragment.remote.RemoteFragment;
 
 public class ActMainViewModel extends BaseViewModel {
-    private LiveData<RestUserSE> userSELiveData = null;
-
-    LiveData<RestUserSE> getUserSE(String order, String sort, String site, int page) {
-        if (userSELiveData == null) {
-            userSELiveData = new MutableLiveData<>();
-            userSELiveData = getRepository().getUserStackExchange(order, sort, site, page);
-        }
-        return userSELiveData;
-    }
-
     public void onClickRoom(View view) {
 
     }

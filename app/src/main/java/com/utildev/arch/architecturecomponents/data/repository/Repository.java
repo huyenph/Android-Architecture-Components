@@ -2,9 +2,6 @@ package com.utildev.arch.architecturecomponents.data.repository;
 
 import android.arch.lifecycle.LiveData;
 
-import com.google.gson.JsonObject;
-import com.utildev.arch.architecturecomponents.data.remote.BaseModel;
-import com.utildev.arch.architecturecomponents.data.remote.stackexchange.RestItemSE;
 import com.utildev.arch.architecturecomponents.data.remote.stackexchange.RestUserSE;
 import com.utildev.arch.architecturecomponents.data.room.UserEntity;
 
