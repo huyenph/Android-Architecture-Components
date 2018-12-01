@@ -24,6 +24,11 @@ public class RemoteFragment extends BaseFragment {
         View view = binding.getRoot();
         viewModel = ViewModelProviders.of(this).get(RemoteViewModel.class);
         binding.setViewModel(viewModel);
+        init();
         return view;
+    }
+
+    private void init() {
+        viewModel.showLoading(null);
     }
 }

@@ -37,13 +37,13 @@ public abstract class BaseViewModel extends ViewModel {
     }
 
     //region TODO: Control loading view
-    protected void showLoading(View view) {
+    public void showLoading(View view) {
         if (loadingView.get() != View.VISIBLE) {
             loadingView.set(View.VISIBLE);
         }
     }
 
-    protected void dismissLoading(View view) {
+    public void dismissLoading(View view) {
         if (loadingView.get() != View.GONE) {
             loadingView.set(View.GONE);
         }
