@@ -1,7 +1,6 @@
 package com.utildev.arch.architecturecomponents.data.remote;
 
 import com.google.gson.JsonObject;
-import com.utildev.arch.architecturecomponents.common.base.BaseModel;
 
 import java.util.List;
 import java.util.Map;

@@ -2,7 +2,7 @@ package com.utildev.arch.architecturecomponents.data.remote.stackexchange;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.utildev.arch.architecturecomponents.common.base.BaseModel;
+import com.utildev.arch.architecturecomponents.data.remote.BaseModel;
 
 import java.util.List;
 

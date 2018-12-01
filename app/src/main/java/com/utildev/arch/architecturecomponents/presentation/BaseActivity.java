@@ -1,4 +1,4 @@
-package com.utildev.arch.architecturecomponents.common.base;
+package com.utildev.arch.architecturecomponents.presentation;
 
 import android.support.v7.app.AppCompatActivity;
 

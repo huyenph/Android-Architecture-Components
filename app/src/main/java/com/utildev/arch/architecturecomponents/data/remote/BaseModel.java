@@ -1,4 +1,4 @@
-package com.utildev.arch.architecturecomponents.common.base;
+package com.utildev.arch.architecturecomponents.data.remote;
 
 import java.io.Serializable;
 
