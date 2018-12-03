@@ -19,8 +19,10 @@ import java.util.List;
 import javax.inject.Inject;
 
 import io.reactivex.Flowable;
+import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
 public class AppRepository implements Repository {
@@ -42,7 +44,6 @@ public class AppRepository implements Repository {
     @Override
     public LiveData<RestUserSE> getUserStackExchange(String order, String sort, String site, int page) {
         MutableLiveData<RestUserSE> mutableLiveData = new MutableLiveData<>();
-        RestUserSE userSE;
         Disposable disposable = remoteDataSource.requestUserSE(order, sort, site, page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -61,16 +62,28 @@ public class AppRepository implements Repository {
 
     @Override
     public Flowable<Integer> getUserCount() {
-        return null;
+        return roomDataSource.getUserDao().getUserTotal();
     }
 
     @Override
     public LiveData<List<UserEntity>> getAllUser() {
-        return null;
+        MutableLiveData<List<UserEntity>> mutableLiveData = new MutableLiveData<>();
+        Disposable disposable = roomDataSource.getUserDao().getAllUser()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(userEntities -> {
+                    if (userEntities != null) {
+                        mutableLiveData.setValue(userEntities);
+                    } else {
+                        mutableLiveData.setValue(null);
+                    }
+                }, Throwable::printStackTrace);
+        disposables.add(disposable);
+        return mutableLiveData;
     }
 
     @Override
-    public void addUser() {
-
+    public void addUser(UserEntity userEntity) {
+        roomDataSource.getUserDao().insertUser(userEntity);
     }
 }

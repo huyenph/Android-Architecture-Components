@@ -1,6 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
 
-</android.support.constraint.ConstraintLayout>
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.utildev.arch.architecturecomponents.presentation.fragment.room.RoomViewModel" />
+
+        <variable
+            name="adapter"
+            type="android.support.v7.widget.RecyclerView.Adapter" />
+
+        <variable
+            name="layoutManager"
+            type="android.support.v7.widget.RecyclerView.LayoutManager" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffff87">
+
+        <include
+            android:id="@+id/fragRoom_includeList"
+            layout="@layout/view_list"
+            bind:adapter="@{adapter}"
+            bind:layoutManager="@{layoutManager}"
+            bind:viewModel="@{viewModel}" />
+
+        <include
+            layout="@layout/view_loading"
+            bind:viewModel="@{viewModel}" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fragRoom_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/_10dp"
+            android:src="@drawable/ic_add_white" />
+
+    </FrameLayout>
+</layout>

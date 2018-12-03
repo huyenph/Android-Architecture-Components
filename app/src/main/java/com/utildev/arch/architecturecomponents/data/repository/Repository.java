@@ -16,5 +16,5 @@ public interface Repository {
 
     LiveData<List<UserEntity>> getAllUser();
 
-    void addUser();
+    void addUser(UserEntity userEntity);
 }

@@ -9,10 +9,16 @@ import com.utildev.arch.architecturecomponents.data.remote.stackexchange.RestUse
 import com.utildev.arch.architecturecomponents.presentation.BaseActivity;
 import com.utildev.arch.architecturecomponents.presentation.BaseViewModel;
 import com.utildev.arch.architecturecomponents.presentation.fragment.remote.RemoteFragment;
+import com.utildev.arch.architecturecomponents.presentation.fragment.room.RoomFragment;
 
 public class ActMainViewModel extends BaseViewModel {
     public void onClickRoom(View view) {
-
+        if (view.getContext() instanceof BaseActivity) {
+            ((BaseActivity) view.getContext()).addFragment(new RoomFragment(), true, true);
+        } else if (view.getContext() instanceof ContextWrapper) {
+            ((BaseActivity) ((ContextWrapper) view.getContext()).getBaseContext())
+                    .addFragment(new RoomFragment(), true, true);
+        }
     }
 
     public void onClickWebservice(View view) {

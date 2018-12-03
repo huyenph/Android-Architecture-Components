@@ -18,9 +18,9 @@ import retrofit2.http.Query;
 public interface ApiService {
     @GET("users")
     Observable<JsonObject> requestUserSE(@Query("order") String order,
-                                          @Query("sort") String sort,
-                                          @Query("site") String site,
-                                          @Query("page") int page);
+                                         @Query("sort") String sort,
+                                         @Query("site") String site,
+                                         @Query("page") int page);
 
     @FormUrlEncoded
     @POST("upload key, object")

@@ -8,7 +8,7 @@ import android.content.Context;
 @Database(entities = UserEntity.class, version = 1, exportSchema = false)
 public abstract class RoomDataSource extends RoomDatabase {
 
-    abstract UserDao getUserDao();
+    public abstract UserDao getUserDao();
 
     public static RoomDataSource createUserDB(Context context) {
         return Room.databaseBuilder(context, RoomDataSource.class, RoomConstant.DB_NAME).build();
