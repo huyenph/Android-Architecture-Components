@@ -66,20 +66,20 @@ public class AppRepository implements Repository {
     }
 
     @Override
-    public LiveData<List<UserEntity>> getAllUser() {
-        MutableLiveData<List<UserEntity>> mutableLiveData = new MutableLiveData<>();
-        Disposable disposable = roomDataSource.getUserDao().getAllUser()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(userEntities -> {
-                    if (userEntities != null) {
-                        mutableLiveData.setValue(userEntities);
-                    } else {
-                        mutableLiveData.setValue(null);
-                    }
-                }, Throwable::printStackTrace);
-        disposables.add(disposable);
-        return mutableLiveData;
+    public Flowable<List<UserEntity>> getAllUser() {
+//        MutableLiveData<List<UserEntity>> mutableLiveData = new MutableLiveData<>();
+//        Disposable disposable = roomDataSource.getUserDao().getAllUser()
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(userEntities -> {
+//                    if (userEntities != null) {
+//                        mutableLiveData.setValue(userEntities);
+//                    } else {
+//                        mutableLiveData.setValue(null);
+//                    }
+//                }, Throwable::printStackTrace);
+//        disposables.add(disposable);
+        return roomDataSource.getUserDao().getAllUser();
     }
 
     @Override

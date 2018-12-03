@@ -22,7 +22,7 @@ import com.utildev.arch.architecturecomponents.presentation.BaseFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RoomFragment extends BaseFragment implements BaseAdapter.AdapterListener {
+public class RoomFragment extends BaseFragment implements BaseAdapter.AdapterListener, View.OnClickListener {
     private FragmentRoomBinding binding;
     private RoomViewModel viewModel;
 
@@ -44,7 +44,7 @@ public class RoomFragment extends BaseFragment implements BaseAdapter.AdapterLis
     private void init() {
         userList = new ArrayList<>();
         LinearLayoutManager layoutManager = new GridLayoutManager(getContext(), 1, LinearLayoutManager.VERTICAL, false);
-        adapter = new BaseAdapter<>(binding.fragRoomIncludeList.viewListRvContent, layoutManager, R.layout.item_user);
+        adapter = new BaseAdapter<>(binding.fragRoomIncludeList.viewListRvContent, null, R.layout.item_room);
         adapter.setAdapterListener(this);
         binding.setLayoutManager(layoutManager);
         binding.setAdapter(adapter);
@@ -59,6 +59,8 @@ public class RoomFragment extends BaseFragment implements BaseAdapter.AdapterLis
 
         viewModel.getUserRoom();
         viewModel.showLoading(null);
+
+        binding.fragRoomFab.setOnClickListener(this);
     }
 
     private void registerLiveData() {
@@ -68,7 +70,6 @@ public class RoomFragment extends BaseFragment implements BaseAdapter.AdapterLis
     private void userEntityListener(List<UserEntity> userEntities) {
         if (userEntities != null) {
             if (userEntities.size() > 0) {
-                adapter.setLoading(true);
                 userList = userEntities;
                 adapter.set(userList);
             } else {
@@ -80,7 +81,6 @@ public class RoomFragment extends BaseFragment implements BaseAdapter.AdapterLis
 
     @Override
     public void onItemClick(String value) {
-
     }
 
     @Override
@@ -90,6 +90,10 @@ public class RoomFragment extends BaseFragment implements BaseAdapter.AdapterLis
 
     @Override
     public void onLoadMore() {
+    }
 
+    @Override
+    public void onClick(View view) {
+        viewModel.insertUser(new UserEntity(0, "Architecture Components", "Android Development"));
     }
 }

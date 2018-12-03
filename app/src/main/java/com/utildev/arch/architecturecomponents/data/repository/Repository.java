@@ -14,7 +14,7 @@ public interface Repository {
 
     Flowable<Integer> getUserCount();
 
-    LiveData<List<UserEntity>> getAllUser();
+    Flowable<List<UserEntity>> getAllUser();
 
     void addUser(UserEntity userEntity);
 }
