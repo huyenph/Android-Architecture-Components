@@ -21,6 +21,24 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    flavorDimensions "version"
+    productFlavors {
+        develop {
+            dimension "version"
+            applicationId "com.utildev.arch.architecturecomponents"
+            buildConfigField "String", "BASE_URL", "\"http://api.develop.com\""
+        }
+        staging {
+            dimension "version"
+            applicationId "com.utildev.arch.architecturecomponents"
+            buildConfigField "String", "BASE_URL", "\"http://api.staging.com\""
+        }
+        product {
+            dimension "version"
+            applicationId "com.utildev.arch.architecturecomponents"
+            buildConfigField "String", "BASE_URL", "\"https://api.stackexchange.com/2.2/\""
+        }
+    }
     dataBinding {
         enabled = true
     }
