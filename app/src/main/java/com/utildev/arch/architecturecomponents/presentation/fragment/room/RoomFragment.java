@@ -1,6 +1,5 @@
 package com.utildev.arch.architecturecomponents.presentation.fragment.room;
 
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -80,7 +79,7 @@ public class RoomFragment extends BaseFragment implements BaseAdapter.AdapterLis
     }
 
     @Override
-    public void onItemClick(String value) {
+    public void onItemClick(Object object) {
     }
 
     @Override

@@ -1,6 +1,5 @@
 package com.utildev.arch.architecturecomponents.presentation.fragment.remote;
 
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -81,8 +80,7 @@ public class RemoteFragment extends BaseFragment implements BaseAdapter.AdapterL
     }
 
     @Override
-    public void onItemClick(String value) {
-
+    public void onItemClick(Object object) {
     }
 
     @Override

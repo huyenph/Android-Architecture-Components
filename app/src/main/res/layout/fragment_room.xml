@@ -20,7 +20,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ffff87">
+        android:background="#ffffff">
 
         <include
             android:id="@+id/fragRoom_includeList"

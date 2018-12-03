@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import com.utildev.arch.architecturecomponents.BR;
 import com.utildev.arch.architecturecomponents.R;
+import com.utildev.arch.architecturecomponents.data.remote.BaseModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -135,7 +136,7 @@ public class BaseAdapter<T> extends RecyclerView.Adapter<BaseAdapter.ViewHolder>
     }
 
     public interface AdapterListener {
-        void onItemClick(String value);
+        void onItemClick(Object object);
 
         boolean onItemLongClick(Object object);
 

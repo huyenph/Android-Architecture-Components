@@ -21,7 +21,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#0ff">
+        android:background="#ffffff">
 
         <include
             android:id="@+id/fragRemote_includeList"

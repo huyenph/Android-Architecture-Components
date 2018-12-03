@@ -17,7 +17,9 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_5dp">
+        android:layout_margin="@dimen/_5dp"
+        android:onClick="@{()->listener.onItemClick(viewModel)}"
+        android:onLongClick="@{()->listener.onItemLongClick(viewModel.displayName)}">
 
         <FrameLayout
             android:id="@+id/itemUser_flAvatar"
