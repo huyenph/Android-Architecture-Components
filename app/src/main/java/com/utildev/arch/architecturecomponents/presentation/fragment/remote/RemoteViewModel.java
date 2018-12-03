@@ -1,15 +1,24 @@
 package com.utildev.arch.architecturecomponents.presentation.fragment.remote;
 
-import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.utildev.arch.architecturecomponents.data.remote.stackexchange.RestUserSE;
 import com.utildev.arch.architecturecomponents.presentation.BaseViewModel;
 
-public class RemoteViewModel extends BaseViewModel {
-    private LiveData<RestUserSE> userSELiveData = null;
+import java.lang.reflect.Type;
 
-    public LiveData<RestUserSE> getUserSELiveData() {
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
+
+public class RemoteViewModel extends BaseViewModel {
+    private MutableLiveData<RestUserSE> userSELiveData = null;
+    private CompositeDisposable compositeDisposable = new CompositeDisposable();
+
+    MutableLiveData<RestUserSE> getUserSELiveData() {
         return userSELiveData;
     }
 
@@ -17,6 +26,16 @@ public class RemoteViewModel extends BaseViewModel {
         if (userSELiveData == null) {
             userSELiveData = new MutableLiveData<>();
         }
-        userSELiveData = getRepository().getUserStackExchange(order, sort, site, page);
+        Disposable disposable = getRepository().getUserStackExchange(order, sort, site, page)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(jsonObject -> {
+                    if (jsonObject != null) {
+                        Type type = new TypeToken<RestUserSE>() {
+                        }.getType();
+                        userSELiveData.setValue(new Gson().fromJson(jsonObject, type));
+                    }
+                }, Throwable::printStackTrace);
+        compositeDisposable.add(disposable);
     }
 }
