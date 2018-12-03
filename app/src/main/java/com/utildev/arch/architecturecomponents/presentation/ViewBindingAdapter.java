@@ -18,8 +18,6 @@ import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
 import com.utildev.arch.architecturecomponents.R;
 
-import javax.sql.DataSource;
-
 public class ViewBindingAdapter {
     private static RequestOptions requestOptions = new RequestOptions().transforms(new CircleCrop());
 
