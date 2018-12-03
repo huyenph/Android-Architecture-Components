@@ -51,19 +51,23 @@ public class RoomFragment extends BaseFragment implements BaseAdapter.AdapterLis
         binding.fragRoomIncludeList.viewListSrLayout.setOnRefreshListener(() -> {
             userList.clear();
             adapter.set(userList);
-            viewModel.getUserRoom();
+            viewModel.getAllUser();
             viewModel.showLoading(null);
             binding.fragRoomIncludeList.viewListSrLayout.setRefreshing(false);
         });
 
-        viewModel.getUserRoom();
+        viewModel.getAllUser();
         viewModel.showLoading(null);
+
+        viewModel.getTotalUserCount();
 
         binding.fragRoomFab.setOnClickListener(this);
     }
 
     private void registerLiveData() {
         viewModel.getUserLiveData().observe(this, this::userEntityListener);
+        viewModel.getUserCount().observe(this, integer ->
+                Toast.makeText(getContext(), String.valueOf(integer), Toast.LENGTH_SHORT).show());
     }
 
     private void userEntityListener(List<UserEntity> userEntities) {

@@ -16,13 +16,18 @@ import io.reactivex.schedulers.Schedulers;
 
 public class RoomViewModel extends BaseViewModel {
     private MutableLiveData<List<UserEntity>> userLiveData;
+    private MutableLiveData<Integer> userCount;
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     LiveData<List<UserEntity>> getUserLiveData() {
         return userLiveData;
     }
 
-    void getUserRoom() {
+    MutableLiveData<Integer> getUserCount() {
+        return userCount;
+    }
+
+    void getAllUser() {
         if (userLiveData == null) {
             userLiveData = new MutableLiveData<>();
         }
@@ -41,7 +46,18 @@ public class RoomViewModel extends BaseViewModel {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(object -> {
-                }, Throwable::printStackTrace, this::getUserRoom);
+                }, Throwable::printStackTrace, this::getAllUser);
+        compositeDisposable.add(disposable);
+    }
+
+    void getTotalUserCount() {
+        if (userCount == null) {
+            userCount = new MutableLiveData<>();
+        }
+        Disposable disposable = getRepository().getUserCount()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(integer -> userCount.setValue(integer), Throwable::printStackTrace);
         compositeDisposable.add(disposable);
     }
 }
