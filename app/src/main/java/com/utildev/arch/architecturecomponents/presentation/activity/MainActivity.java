@@ -6,7 +6,8 @@ import android.os.Bundle;
 
 import com.utildev.arch.architecturecomponents.R;
 import com.utildev.arch.architecturecomponents.databinding.ActivityMainBinding;
-import com.utildev.arch.architecturecomponents.presentation.BaseActivity;
+import com.utildev.arch.architecturecomponents.presentation.activity.main.ActMainViewModel;
+import com.utildev.arch.architecturecomponents.presentation.activity.main.BaseActivity;
 
 public class MainActivity extends BaseActivity {
     private ActivityMainBinding binding;

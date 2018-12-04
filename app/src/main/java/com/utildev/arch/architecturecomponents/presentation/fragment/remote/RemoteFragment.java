@@ -17,7 +17,7 @@ import com.utildev.arch.architecturecomponents.data.remote.stackexchange.RestIte
 import com.utildev.arch.architecturecomponents.data.remote.stackexchange.RestUserSE;
 import com.utildev.arch.architecturecomponents.databinding.FragmentRemoteBinding;
 import com.utildev.arch.architecturecomponents.presentation.BaseAdapter;
-import com.utildev.arch.architecturecomponents.presentation.BaseFragment;
+import com.utildev.arch.architecturecomponents.presentation.fragment.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,13 +55,11 @@ public class RemoteFragment extends BaseFragment implements BaseAdapter.AdapterL
             userList.clear();
             page = 1;
             adapter.set(userList);
-            viewModel.getUserSE("desc", "reputation", "stackoverflow", page);
-            viewModel.showLoading(null);
+            viewModel.getUserSE("desc", "reputation", "stackoverflow", page, true);
             binding.fragRemoteIncludeList.viewListSrLayout.setRefreshing(false);
         });
 
-        viewModel.getUserSE("desc", "reputation", "stackoverflow", page);
-        viewModel.showLoading(null);
+        viewModel.getUserSE("desc", "reputation", "stackoverflow", page, true);
     }
 
     private void registerLiveData() {
@@ -76,7 +74,6 @@ public class RemoteFragment extends BaseFragment implements BaseAdapter.AdapterL
         } else {
             Toast.makeText(getContext(), "Connection error!", Toast.LENGTH_SHORT).show();
         }
-        viewModel.dismissLoading(null);
     }
 
     @Override
@@ -90,6 +87,6 @@ public class RemoteFragment extends BaseFragment implements BaseAdapter.AdapterL
 
     @Override
     public void onLoadMore() {
-        viewModel.getUserSE("desc", "reputation", "stackoverflow", ++page);
+        viewModel.getUserSE("desc", "reputation", "stackoverflow", ++page, false);
     }
 }

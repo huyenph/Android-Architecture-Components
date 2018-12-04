@@ -1,12 +1,8 @@
-package com.utildev.arch.architecturecomponents.presentation.activity;
+package com.utildev.arch.architecturecomponents.presentation.activity.main;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
 import android.content.ContextWrapper;
 import android.view.View;
 
-import com.utildev.arch.architecturecomponents.data.remote.stackexchange.RestUserSE;
-import com.utildev.arch.architecturecomponents.presentation.BaseActivity;
 import com.utildev.arch.architecturecomponents.presentation.BaseViewModel;
 import com.utildev.arch.architecturecomponents.presentation.fragment.remote.RemoteFragment;
 import com.utildev.arch.architecturecomponents.presentation.fragment.room.RoomFragment;

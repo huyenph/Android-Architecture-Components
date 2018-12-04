@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.utildev.arch.architecturecomponents.presentation.activity.ActMainViewModel" />
+            type="com.utildev.arch.architecturecomponents.presentation.activity.main.ActMainViewModel" />
     </data>
 
     <android.support.constraint.ConstraintLayout

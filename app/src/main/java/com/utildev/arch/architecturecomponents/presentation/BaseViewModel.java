@@ -28,6 +28,10 @@ public abstract class BaseViewModel extends ViewModel {
         loadingView = new ObservableInt(View.GONE);
     }
 
+    protected CompositeDisposable getCompositeDisposable() {
+        return compositeDisposable;
+    }
+
     protected AppRepository getRepository() {
         return repository;
     }
@@ -52,9 +56,9 @@ public abstract class BaseViewModel extends ViewModel {
 
     @OnLifecycleEvent(ON_DESTROY)
     public void unSubscribeViewModel() {
-        for (Disposable disposable: repository.getDisposables()) {
-            compositeDisposable.addAll(disposable);
-        }
+//        for (Disposable disposable: repository.getDisposables()) {
+//            compositeDisposable.addAll(disposable);
+//        }
 
         compositeDisposable.clear();
     }

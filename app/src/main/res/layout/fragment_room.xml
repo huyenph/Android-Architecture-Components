@@ -17,20 +17,43 @@
             type="android.support.v7.widget.RecyclerView.LayoutManager" />
     </data>
 
-    <FrameLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#ffffff">
 
+        <TextView
+            android:id="@+id/fragRoom_tvCount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/_5dp"
+            android:textColor="@color/colorPrimary"
+            bind:layout_constraintEnd_toEndOf="parent"
+            bind:layout_constraintStart_toStartOf="parent"
+            bind:layout_constraintTop_toTopOf="parent" />
+
         <include
             android:id="@+id/fragRoom_includeList"
             layout="@layout/view_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             bind:adapter="@{adapter}"
             bind:layoutManager="@{layoutManager}"
+            bind:layout_constraintBottom_toBottomOf="parent"
+            bind:layout_constraintEnd_toEndOf="parent"
+            bind:layout_constraintStart_toStartOf="parent"
+            bind:layout_constraintTop_toBottomOf="@id/fragRoom_tvCount"
             bind:viewModel="@{viewModel}" />
 
         <include
             layout="@layout/view_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            bind:layout_constraintBottom_toBottomOf="parent"
+            bind:layout_constraintEnd_toEndOf="parent"
+            bind:layout_constraintStart_toStartOf="parent"
+            bind:layout_constraintTop_toTopOf="parent"
             bind:viewModel="@{viewModel}" />
 
         <android.support.design.widget.FloatingActionButton
@@ -39,7 +62,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="@dimen/_10dp"
-            android:src="@drawable/ic_add_white" />
+            android:src="@drawable/ic_add_white"
+            bind:layout_constraintBottom_toBottomOf="parent"
+            bind:layout_constraintEnd_toEndOf="parent" />
 
-    </FrameLayout>
+    </android.support.constraint.ConstraintLayout>
 </layout>

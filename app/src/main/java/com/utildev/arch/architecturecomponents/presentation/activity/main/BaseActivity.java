@@ -1,10 +1,11 @@
-package com.utildev.arch.architecturecomponents.presentation;
+package com.utildev.arch.architecturecomponents.presentation.activity.main;
 
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
 import com.utildev.arch.architecturecomponents.R;
+import com.utildev.arch.architecturecomponents.presentation.fragment.BaseFragment;
 
 public abstract class BaseActivity extends AppCompatActivity {
     private void transactionFragment(BaseFragment fragment, boolean replace, boolean addToBackStack, boolean animation) {

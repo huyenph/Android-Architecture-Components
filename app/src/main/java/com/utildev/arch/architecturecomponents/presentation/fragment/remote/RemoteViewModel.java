@@ -10,19 +10,20 @@ import com.utildev.arch.architecturecomponents.presentation.BaseViewModel;
 import java.lang.reflect.Type;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class RemoteViewModel extends BaseViewModel {
     private MutableLiveData<RestUserSE> userSELiveData = null;
-    private CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     MutableLiveData<RestUserSE> getUserSELiveData() {
         return userSELiveData;
     }
 
-    void getUserSE(String order, String sort, String site, int page) {
+    void getUserSE(String order, String sort, String site, int page, boolean showLoading) {
+        if (showLoading) {
+            showLoading(null);
+        }
         if (userSELiveData == null) {
             userSELiveData = new MutableLiveData<>();
         }
@@ -34,8 +35,9 @@ public class RemoteViewModel extends BaseViewModel {
                         Type type = new TypeToken<RestUserSE>() {
                         }.getType();
                         userSELiveData.setValue(new Gson().fromJson(jsonObject, type));
+                        dismissLoading(null);
                     }
                 }, Throwable::printStackTrace);
-        compositeDisposable.add(disposable);
+        getCompositeDisposable().add(disposable);
     }
 }

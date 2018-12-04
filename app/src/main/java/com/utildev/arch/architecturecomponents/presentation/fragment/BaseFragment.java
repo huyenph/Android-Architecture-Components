@@ -1,7 +1,9 @@
-package com.utildev.arch.architecturecomponents.presentation;
+package com.utildev.arch.architecturecomponents.presentation.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+
+import com.utildev.arch.architecturecomponents.presentation.activity.main.BaseActivity;
 
 public abstract class BaseFragment extends Fragment {
     private FragmentResultListener fmResultListener;

@@ -16,4 +16,6 @@ public interface Repository {
     Flowable<List<UserEntity>> getAllUser();
 
     void addUser(UserEntity userEntity);
+
+    void deleteUser(UserEntity userEntity);
 }

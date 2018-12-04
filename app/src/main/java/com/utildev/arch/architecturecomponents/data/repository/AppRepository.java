@@ -75,4 +75,9 @@ public class AppRepository implements Repository {
     public void addUser(UserEntity userEntity) {
         roomDataSource.getUserDao().insertUser(userEntity);
     }
+
+    @Override
+    public void deleteUser(UserEntity userEntity) {
+        roomDataSource.getUserDao().deleteUser(userEntity);
+    }
 }

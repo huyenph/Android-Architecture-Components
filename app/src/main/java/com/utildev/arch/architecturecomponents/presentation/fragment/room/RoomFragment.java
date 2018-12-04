@@ -10,13 +10,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.utildev.arch.architecturecomponents.R;
 import com.utildev.arch.architecturecomponents.data.room.UserEntity;
 import com.utildev.arch.architecturecomponents.databinding.FragmentRoomBinding;
 import com.utildev.arch.architecturecomponents.presentation.BaseAdapter;
-import com.utildev.arch.architecturecomponents.presentation.BaseFragment;
+import com.utildev.arch.architecturecomponents.presentation.fragment.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,12 +51,10 @@ public class RoomFragment extends BaseFragment implements BaseAdapter.AdapterLis
             userList.clear();
             adapter.set(userList);
             viewModel.getAllUser();
-            viewModel.showLoading(null);
             binding.fragRoomIncludeList.viewListSrLayout.setRefreshing(false);
         });
 
         viewModel.getAllUser();
-        viewModel.showLoading(null);
 
         viewModel.getTotalUserCount();
 
@@ -67,27 +64,31 @@ public class RoomFragment extends BaseFragment implements BaseAdapter.AdapterLis
     private void registerLiveData() {
         viewModel.getUserLiveData().observe(this, this::userEntityListener);
         viewModel.getUserCount().observe(this, integer ->
-                Toast.makeText(getContext(), String.valueOf(integer), Toast.LENGTH_SHORT).show());
+                binding.fragRoomTvCount.setText(String.valueOf(integer)));
     }
 
     private void userEntityListener(List<UserEntity> userEntities) {
         if (userEntities != null) {
-            if (userEntities.size() > 0) {
-                userList = userEntities;
-                adapter.set(userList);
-            } else {
-                Toast.makeText(getContext(), "Empty!", Toast.LENGTH_SHORT).show();
+            userList = userEntities;
+            adapter.set(userList);
+            if (userEntities.size() == 0) {
+                binding.fragRoomTvCount.setText("Empty!");
             }
         }
-        viewModel.dismissLoading(null);
     }
 
     @Override
     public void onItemClick(Object object) {
+        if (object instanceof UserEntity) {
+            viewModel.deleteUser((UserEntity) object);
+        }
     }
 
     @Override
     public boolean onItemLongClick(Object object) {
+        if (object instanceof UserEntity) {
+            viewModel.deleteUser((UserEntity) object);
+        }
         return false;
     }
 
