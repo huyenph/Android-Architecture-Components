@@ -4,6 +4,7 @@ import android.content.ContextWrapper;
 import android.view.View;
 
 import com.utildev.arch.architecturecomponents.presentation.BaseViewModel;
+import com.utildev.arch.architecturecomponents.presentation.activity.BaseActivity;
 import com.utildev.arch.architecturecomponents.presentation.fragment.remote.RemoteFragment;
 import com.utildev.arch.architecturecomponents.presentation.fragment.room.RoomFragment;
 

@@ -3,7 +3,7 @@ package com.utildev.arch.architecturecomponents.presentation.fragment;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
-import com.utildev.arch.architecturecomponents.presentation.activity.main.BaseActivity;
+import com.utildev.arch.architecturecomponents.presentation.activity.BaseActivity;
 
 public abstract class BaseFragment extends Fragment {
     private FragmentResultListener fmResultListener;

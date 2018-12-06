@@ -1,4 +1,4 @@
-package com.utildev.arch.architecturecomponents.presentation.activity.main;
+package com.utildev.arch.architecturecomponents.presentation.activity;
 
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
