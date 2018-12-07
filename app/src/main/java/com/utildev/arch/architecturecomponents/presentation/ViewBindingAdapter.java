@@ -21,16 +21,6 @@ import com.utildev.arch.architecturecomponents.R;
 public class ViewBindingAdapter {
     private static RequestOptions requestOptions = new RequestOptions().transforms(new CircleCrop());
 
-    @BindingAdapter("layoutManager")
-    public static void setLayoutManager(RecyclerView recyclerView, RecyclerView.LayoutManager manager) {
-        recyclerView.setLayoutManager(manager);
-    }
-
-    @BindingAdapter("adapter")
-    public static void setAdapter(RecyclerView recyclerView, RecyclerView.Adapter adapter) {
-        recyclerView.setAdapter(adapter);
-    }
-
     @BindingAdapter({"imageUrl", "progressBar"})
     public static void loadImage(ImageView imageView, String imageUrl, ProgressBar progressBar) {
         Glide.with(imageView.getContext())

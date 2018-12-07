@@ -48,8 +48,8 @@ public class RemoteFragment extends BaseFragment implements BaseAdapter.AdapterL
         LinearLayoutManager layoutManager = new GridLayoutManager(getContext(), 1, LinearLayoutManager.VERTICAL, false);
         adapter = new BaseAdapter<>(binding.fragRemoteIncludeList.viewListRvContent, layoutManager, R.layout.item_user);
         adapter.setAdapterListener(this);
-        binding.setLayoutManager(layoutManager);
-        binding.setAdapter(adapter);
+        binding.fragRemoteIncludeList.viewListRvContent.setLayoutManager(layoutManager);
+        binding.fragRemoteIncludeList.viewListRvContent.setAdapter(adapter);
 
         binding.fragRemoteIncludeList.viewListSrLayout.setOnRefreshListener(() -> {
             userList.clear();

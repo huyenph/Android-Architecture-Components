@@ -8,14 +8,6 @@
             name="viewModel"
             type="com.utildev.arch.architecturecomponents.presentation.fragment.remote.RemoteViewModel" />
 
-        <variable
-            name="adapter"
-            type="android.support.v7.widget.RecyclerView.Adapter" />
-
-        <variable
-            name="layoutManager"
-            type="android.support.v7.widget.RecyclerView.LayoutManager" />
-
     </data>
 
     <FrameLayout
@@ -26,8 +18,6 @@
         <include
             android:id="@+id/fragRemote_includeList"
             layout="@layout/view_list"
-            bind:adapter="@{adapter}"
-            bind:layoutManager="@{layoutManager}"
             bind:viewModel="@{viewModel}" />
 
         <include

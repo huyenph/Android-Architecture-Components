@@ -44,8 +44,8 @@ public class RoomFragment extends BaseFragment implements BaseAdapter.AdapterLis
         LinearLayoutManager layoutManager = new GridLayoutManager(getContext(), 1, LinearLayoutManager.VERTICAL, false);
         adapter = new BaseAdapter<>(binding.fragRoomIncludeList.viewListRvContent, null, R.layout.item_room);
         adapter.setAdapterListener(this);
-        binding.setLayoutManager(layoutManager);
-        binding.setAdapter(adapter);
+        binding.fragRoomIncludeList.viewListRvContent.setLayoutManager(layoutManager);
+        binding.fragRoomIncludeList.viewListRvContent.setAdapter(adapter);
 
         binding.fragRoomIncludeList.viewListSrLayout.setOnRefreshListener(() -> {
             userList.clear();
