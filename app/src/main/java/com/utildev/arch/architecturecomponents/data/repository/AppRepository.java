@@ -3,7 +3,7 @@ package com.utildev.arch.architecturecomponents.data.repository;
 import com.google.gson.JsonObject;
 import com.utildev.arch.architecturecomponents.data.remote.RemoteDataSource;
 import com.utildev.arch.architecturecomponents.data.room.RoomDataSource;
-import com.utildev.arch.architecturecomponents.data.room.UserEntity;
+import com.utildev.arch.architecturecomponents.data.room.model.UserEntity;
 
 import java.util.ArrayList;
 import java.util.List;

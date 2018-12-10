@@ -1,6 +1,7 @@
 package com.utildev.arch.architecturecomponents.presentation.fragment.room;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,12 +11,18 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.utildev.arch.architecturecomponents.R;
-import com.utildev.arch.architecturecomponents.data.room.UserEntity;
+import com.utildev.arch.architecturecomponents.data.room.model.Github;
+import com.utildev.arch.architecturecomponents.data.room.model.UserEntity;
 import com.utildev.arch.architecturecomponents.databinding.FragmentRoomBinding;
 import com.utildev.arch.architecturecomponents.presentation.BaseAdapter;
 import com.utildev.arch.architecturecomponents.presentation.fragment.BaseFragment;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +33,24 @@ public class RoomFragment extends BaseFragment implements BaseAdapter.AdapterLis
 
     private List<UserEntity> userList;
     private BaseAdapter<UserEntity> adapter;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EventBus.getDefault().register(this);
+    }
 
     @Nullable
     @Override
@@ -99,5 +124,10 @@ public class RoomFragment extends BaseFragment implements BaseAdapter.AdapterLis
     @Override
     public void onClick(View view) {
         viewModel.insertUser(new UserEntity(0, "Architecture Components", "Android Development"));
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(Github github) {
+        Toast.makeText(getContext(), "room event", Toast.LENGTH_SHORT).show();
     }
 }

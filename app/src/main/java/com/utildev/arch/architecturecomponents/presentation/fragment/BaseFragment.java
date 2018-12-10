@@ -40,6 +40,12 @@ public abstract class BaseFragment extends Fragment {
         }
     }
 
+    public void clearStack() {
+        if (getActivity() instanceof BaseActivity) {
+            ((BaseActivity) getActivity()).clearStack();
+        }
+    }
+
     interface FragmentResultListener {
         void onFragmentResult(int code, Bundle bundle);
     }

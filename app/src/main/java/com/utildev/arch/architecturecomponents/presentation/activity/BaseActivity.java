@@ -49,4 +49,8 @@ public abstract class BaseActivity extends AppCompatActivity {
             fragmentManager.popBackStack();
         }
     }
+
+    public void clearStack() {
+        getSupportFragmentManager().popBackStack();
+    }
 }

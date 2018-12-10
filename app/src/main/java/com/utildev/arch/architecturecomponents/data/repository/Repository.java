@@ -1,7 +1,7 @@
 package com.utildev.arch.architecturecomponents.data.repository;
 
 import com.google.gson.JsonObject;
-import com.utildev.arch.architecturecomponents.data.room.UserEntity;
+import com.utildev.arch.architecturecomponents.data.room.model.UserEntity;
 
 import java.util.List;
 

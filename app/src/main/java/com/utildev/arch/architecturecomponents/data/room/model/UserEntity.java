@@ -1,8 +1,10 @@
-package com.utildev.arch.architecturecomponents.data.room;
+package com.utildev.arch.architecturecomponents.data.room.model;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+
+import com.utildev.arch.architecturecomponents.data.room.RoomConstant;
 
 @Entity(tableName = RoomConstant.USER)
 public class UserEntity {

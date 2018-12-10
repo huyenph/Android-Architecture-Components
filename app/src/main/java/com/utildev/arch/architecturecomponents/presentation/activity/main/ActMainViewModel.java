@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.utildev.arch.architecturecomponents.presentation.BaseViewModel;
 import com.utildev.arch.architecturecomponents.presentation.activity.BaseActivity;
+import com.utildev.arch.architecturecomponents.presentation.fragment.github.GithubFragment;
 import com.utildev.arch.architecturecomponents.presentation.fragment.remote.RemoteFragment;
 import com.utildev.arch.architecturecomponents.presentation.fragment.room.RoomFragment;
 
@@ -28,6 +29,11 @@ public class ActMainViewModel extends BaseViewModel {
     }
 
     public void onClickGithub(View view) {
-
+        if (view.getContext() instanceof BaseActivity) {
+            ((BaseActivity) view.getContext()).replaceFragment(new GithubFragment(), true, true);
+        } else if (view.getContext() instanceof ContextWrapper) {
+            ((BaseActivity) ((ContextWrapper) view.getContext()).getBaseContext())
+                    .replaceFragment(new GithubFragment(), true, true);
+        }
     }
 }

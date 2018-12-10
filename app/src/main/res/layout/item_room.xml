@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.utildev.arch.architecturecomponents.data.room.UserEntity" />
+            type="com.utildev.arch.architecturecomponents.data.room.model.UserEntity" />
 
         <variable
             name="listener"

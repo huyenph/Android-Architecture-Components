@@ -5,6 +5,8 @@ import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
+import com.utildev.arch.architecturecomponents.data.room.model.UserEntity;
+
 @Database(entities = UserEntity.class, version = 1, exportSchema = false)
 public abstract class RoomDataSource extends RoomDatabase {
 
