@@ -12,6 +12,7 @@ public class MyApplication extends Application {
                 .appModule(new AppModule(this))
                 .remoteModule(new RemoteModule())
                 .roomModule(new RoomModule())
+                .sharedPreferencesModule(new SharedPreferencesModule())
                 .build();
     }
 }

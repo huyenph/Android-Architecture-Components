@@ -1,11 +1,17 @@
 package com.utildev.arch.architecturecomponents.presentation.activity;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
 import com.utildev.arch.architecturecomponents.R;
+import com.utildev.arch.architecturecomponents.common.utilities.MySharedPreferences;
+import com.utildev.arch.architecturecomponents.di.MyApplication;
 import com.utildev.arch.architecturecomponents.presentation.fragment.BaseFragment;
+
+import javax.inject.Inject;
 
 public abstract class BaseActivity extends AppCompatActivity {
     private void transactionFragment(BaseFragment fragment, boolean replace, boolean addToBackStack, boolean animation) {
