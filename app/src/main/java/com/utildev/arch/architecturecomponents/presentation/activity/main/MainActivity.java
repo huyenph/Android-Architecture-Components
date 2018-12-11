@@ -21,8 +21,6 @@ import javax.inject.Inject;
 public class MainActivity extends BaseActivity {
     private ActivityMainBinding binding;
     private ActMainViewModel viewModel;
-//    @Inject
-//    private MySharedPreferences mySharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +28,8 @@ public class MainActivity extends BaseActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         viewModel = ViewModelProviders.of(this).get(ActMainViewModel.class);
         binding.setViewModel(viewModel);
-//        MyApplication.appComponent.inject(this);
-//        mySharedPreferences.putString("aaa", "hellooo");
-//        Toast.makeText(this, mySharedPreferences.getString("aaa"), Toast.LENGTH_SHORT).show();
+        mySharedPreferences.putString("aaa", "hello world");
+        Toast.makeText(this, mySharedPreferences.getString("aaa"), Toast.LENGTH_SHORT).show();
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

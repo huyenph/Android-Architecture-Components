@@ -14,6 +14,15 @@ import com.utildev.arch.architecturecomponents.presentation.fragment.BaseFragmen
 import javax.inject.Inject;
 
 public abstract class BaseActivity extends AppCompatActivity {
+    @Inject
+    protected MySharedPreferences mySharedPreferences;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        MyApplication.appComponent.inject(this);
+    }
+
     private void transactionFragment(BaseFragment fragment, boolean replace, boolean addToBackStack, boolean animation) {
         FragmentManager fm = getSupportFragmentManager();
         if (fm != null && fragment != null) {
